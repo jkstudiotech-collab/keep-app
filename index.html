@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeEp - 看見習慣的生命力，從種子到花朵</title>
+    <title>KeEp - 看見習慣的生命力，從種子到花朵。</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
@@ -22,8 +22,10 @@
             scroll-behavior: smooth;
         }
 
+        /* 語系切換顯示 */
         [lang="en"] .lang-zh, [lang="zh-TW"] .lang-en { display: none; }
 
+        /* 成長階梯視覺效果 */
         .evolution-step {
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -32,7 +34,7 @@
             color: #588157;
         }
 
-        /* 手機模擬器樣式 */
+        /* 手機模擬器外框樣式 */
         .phone-mockup {
             position: relative;
             width: 280px;
@@ -42,6 +44,7 @@
             background: #fff;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.2);
             overflow: hidden;
+            z-index: 10;
         }
         .phone-notch {
             position: absolute;
@@ -53,7 +56,7 @@
             background: #3A4434;
             border-bottom-left-radius: 1rem;
             border-bottom-right-radius: 1rem;
-            z-index: 10;
+            z-index: 20;
         }
     </style>
 </head>
@@ -68,38 +71,38 @@
 
     <main class="flex-grow">
         
-        <section class="px-6 py-16 md:py-28 max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-                <div class="flex-1 text-left">
-                    <h2 class="text-4xl md:text-6xl font-bold mb-8 text-[#588157] leading-[1.2] lang-zh">
+        <section class="relative px-6 py-16 md:py-28 overflow-hidden">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                
+                <div class="flex-1 text-left z-10">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-8 text-[#588157] leading-tight lang-zh">
                         看見習慣的生命力，<br><span class="text-[#A3B18A]">從種子到花朵。</span>
                     </h2>
-                    <h2 class="text-4xl md:text-6xl font-bold mb-8 text-[#588157] leading-[1.2] lang-en">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-8 text-[#588157] leading-tight lang-en">
                         Experience Habit Vitality,<br><span class="text-[#A3B18A]">From Seed to Bloom.</span>
                     </h2>
                     
-                    <p class="text-lg text-[#88927F] mb-10 leading-relaxed lang-zh max-w-lg">
-                        重新定義「日常清單」。結合北歐極簡美學與溫暖植物成長系統，讓你的每一個細小堅持，都成為花朵綻放的養分。告別枯燥的打勾，開始一場溫暖的成長之旅。
+                    <p class="text-lg md:text-xl text-[#88927F] mb-10 leading-relaxed lang-zh max-w-lg">
+                        KeEp 是一款重新定義「日常清單」的習慣養成 App。結合北歐極簡美學與溫暖植物成長系統，告別枯燥的打勾與數據壓力，讓你的每一次堅持，都成為花朵綻放的養分。
                     </p>
-                    <p class="text-lg text-[#88927F] mb-10 leading-relaxed lang-en max-w-lg">
-                        Redefining the "Daily List." Combining Nordic minimalism with a botanical growth system, turning every tiny persistence into nutrients for blooming. Say goodbye to dry checkmarks and start a warm journey of growth.
+                    <p class="text-lg md:text-xl text-[#88927F] mb-10 leading-relaxed lang-en max-w-lg">
+                        KeEp redefines your daily list. Combining Nordic minimalism with a warm growth system, we replace dry checkmarks with blooming flowers, making every persistence a nutrient for growth.
                     </p>
                     
-                    <div class="flex flex-wrap gap-4">
-                        <a href="mailto:kevinjwu.studio@gmail.com" class="inline-block bg-[#A3B18A] text-white px-10 py-4 rounded-2xl font-medium shadow-xl shadow-[#A3B18A]/30 hover:bg-[#588157] transition-all">
-                            <span class="lang-zh">聯絡開發者</span><span class="lang-en">Contact Developer</span>
-                        </a>
-                    </div>
+                    <a href="mailto:kevinjwu.studio@gmail.com" class="inline-block bg-[#A3B18A] text-white px-10 py-4 rounded-2xl font-medium shadow-xl shadow-[#A3B18A]/30 hover:bg-[#588157] hover:-translate-y-1 transition-all">
+                        <span class="lang-zh">聯絡開發者</span><span class="lang-en">Contact Developer</span>
+                    </a>
                 </div>
 
                 <div class="flex-1 flex justify-center items-center relative">
-                    <div class="absolute w-72 h-72 bg-[#E9EDC9] rounded-full blur-[100px] opacity-40 -z-10"></div>
+                    <div class="absolute w-[400px] h-[400px] bg-[#E9EDC9]/30 rounded-full blur-3xl -z-0"></div>
                     
                     <div class="phone-mockup">
                         <div class="phone-notch"></div>
                         <img src="https://via.placeholder.com/280x570/F8F9F5/588157?text=KeEp+App+UI" alt="KeEp App Screenshot" class="w-full h-full object-cover">
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -107,14 +110,20 @@
             <div class="max-w-5xl mx-auto flex justify-around items-center text-center">
                 <div class="evolution-step">
                     <div class="text-4xl mb-2">🌱</div>
-                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 1-7</p>
+                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 1</p>
                     <p class="text-sm lang-zh">發芽</p><p class="text-sm lang-en">Sprout</p>
                 </div>
                 <div class="w-12 h-[1px] bg-[#E9EDC9]"></div>
                 <div class="evolution-step">
                     <div class="text-4xl mb-2">🌿</div>
-                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 21</p>
+                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 7</p>
                     <p class="text-sm lang-zh">茁壯</p><p class="text-sm lang-en">Strengthen</p>
+                </div>
+                <div class="w-12 h-[1px] bg-[#E9EDC9]"></div>
+                <div class="evolution-step">
+                    <div class="text-4xl mb-2">🌳</div>
+                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 21</p>
+                    <p class="text-sm lang-zh">內化</p><p class="text-sm lang-en">Internalize</p>
                 </div>
                 <div class="w-12 h-[1px] bg-[#E9EDC9]"></div>
                 <div class="evolution-step">
@@ -125,47 +134,31 @@
             </div>
         </section>
 
-        <section class="px-6 py-24 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section class="px-6 py-24 max-w-6xl mx-auto space-y-24">
             
-            <div class="bg-white/50 p-8 rounded-[32px] border border-[#F0F2EB] hover:shadow-lg transition-all">
-                <div class="text-3xl mb-4">🌸</div>
-                <h3 class="text-xl font-bold mb-3 text-[#588157] lang-zh">視覺化成長模型</h3>
-                <h3 class="text-xl font-bold mb-3 text-[#588157] lang-en">Visual Growth</h3>
-                <p class="text-sm text-[#6B705C] leading-relaxed lang-zh">見證每一次實踐的力量。從第 7 次發芽到 30 次燦爛盛開，看著約定慢慢成長為繁花盛開的模樣。</p>
-                <p class="text-sm text-[#6B705C] leading-relaxed lang-en">Witness the power of practice. From sprouting at 7 counts to blooming at 30, see your commitments grow.</p>
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1 order-2 md:order-1">
+                    <div class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-xs font-bold mb-4 uppercase tracking-widest">Core System</div>
+                    <h3 class="text-3xl font-bold mb-6 lang-zh">視覺化成長與寬容連續</h3>
+                    <h3 class="text-3xl font-bold mb-6 lang-en">Visual Growth & Flexible Streaks</h3>
+                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-zh">種子會隨完成次數進化，降低對清單的壓力感。獨創的「任務日計算連續」邏輯，即便生活忙碌，只要在約定的日子完成，你的成長就不會中斷。</p>
+                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-en">Seeds evolve with your actions, reducing list-induced stress. Our "Task-Day" logic ensures your streak stays alive as long as you fulfill your scheduled commitments.</p>
+                </div>
+                <div class="flex-1 order-1 md:order-2 bg-white p-8 rounded-[40px] shadow-sm border border-[#F0F2EB]">
+                    <div class="aspect-square bg-[#F8F9F5] rounded-[32px] flex items-center justify-center text-6xl italic text-[#DAD7CD]">KeEp</div>
+                </div>
             </div>
 
-            <div class="bg-white/50 p-8 rounded-[32px] border border-[#F0F2EB] hover:shadow-lg transition-all">
-                <div class="text-3xl mb-4">🗓️</div>
-                <h3 class="text-xl font-bold mb-3 text-[#588157] lang-zh">為生活節奏而生</h3>
-                <h3 class="text-xl font-bold mb-3 text-[#588157] lang-en">Built for Life Rhythms</h3>
-                <p class="text-sm text-[#6B705C] leading-relaxed lang-zh">獨創「任務日連續」邏輯。無論週末限定或週間規律，只要在約定的日子完成，連續紀錄便能持續累積。</p>
-                <p class="text-sm text-[#6B705C] leading-relaxed lang-en">Exclusive "Task-Day Streak" logic. Your progress stays alive as long as you fulfill your scheduled commitments.</p>
-            </div>
-
-            <div class="bg-white/50 p-8 rounded-[32px] border border-[#F0F2EB] hover:shadow-lg transition-all">
-                <div class="text-3xl mb-4">📈</div>
-                <h3 class="text-xl font-bold mb-3 text-[#588157] lang-zh">三階梯度挑戰</h3>
-                <h3 class="text-xl font-bold mb-3 text-[#588157] lang-en">3-Tier Sprint</h3>
-                <p class="text-sm text-[#6B705C] leading-relaxed lang-zh">內建 7/21/30 天目標框架，協助你從短期的嘗試逐步內化為長期的生活習慣。</p>
-                <p class="text-sm text-[#6B705C] leading-relaxed lang-en">Built-in 7/21/30 day frameworks to help you transition from short-term trials to lifelong habits.</p>
-            </div>
-
-            <div class="bg-white/50 p-8 rounded-[32px] border border-[#F0F2EB] hover:shadow-lg transition-all">
-                <div class="text-3xl mb-4">📒</div>
-                <h3 class="text-xl font-bold mb-3 text-[#588157] lang-zh">數位集章冊</h3>
-                <h3 class="text-xl font-bold mb-3 text-[#588157] lang-en">Digital Stamp Book</h3>
-                <p class="text-sm text-[#6B705C] leading-relaxed lang-zh">整合月曆視圖，完整保留所有執行的歷史紀錄，收納每一份自律的足跡。</p>
-                <p class="text-sm text-[#6B705C] leading-relaxed lang-en">Integrated calendar view to preserve all your execution history and track every step of your self-discipline.</p>
-            </div>
-
-            <div class="bg-white/50 p-8 lg:col-span-2 rounded-[32px] border border-[#F0F2EB] flex flex-col md:flex-row gap-6 items-center hover:shadow-lg transition-all">
-                <div class="text-5xl">🤖</div>
-                <div>
-                    <h3 class="text-xl font-bold mb-3 text-[#588157] lang-zh">AI 週期洞察報告</h3>
-                    <h3 class="text-xl font-bold mb-3 text-[#588157] lang-en">AI Cycle Insights</h3>
-                    <p class="text-sm text-[#6B705C] leading-relaxed lang-zh">在關鍵里程碑，AI 自動彙整數據分析成功因子，並提供量化的溫暖建議，給予最實質的情緒價值。</p>
-                    <p class="text-sm text-[#6B705C] leading-relaxed lang-en">At key milestones, AI analyzes success factors and provides warm, quantitative advice for emotional encouragement.</p>
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1 bg-white p-8 rounded-[40px] shadow-sm border border-[#F0F2EB]">
+                    <div class="aspect-video bg-[#F8F9F5] rounded-[32px] flex items-center justify-center text-4xl">📊</div>
+                </div>
+                <div class="flex-1">
+                    <div class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-xs font-bold mb-4 uppercase tracking-widest">AI & Sprint</div>
+                    <h3 class="text-3xl font-bold mb-6 lang-zh">三階梯度與 AI 觀察筆記</h3>
+                    <h3 class="text-3xl font-bold mb-6 lang-en">Sprint Tiers & AI Insights</h3>
+                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-zh">內建 7/21/30 天挑戰模式。里程碑達成時，AI 會彙整數據並撰寫洞察筆記，分析你的成功因子並給予最溫慢的情緒價值。</p>
+                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-en">Built-in 7/21/30 day sprints. Upon reaching milestones, AI generates observation notes to analyze success factors and offer emotional encouragement.</p>
                 </div>
             </div>
 
