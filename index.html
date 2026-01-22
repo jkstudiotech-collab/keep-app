@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeEp App - Terms & Privacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .content-section { display: none; height: calc(100vh - 130px); overflow-y: auto; }
+        .content-section.active { display: block; }
+        [lang="en"] .lang-zh, [lang="zh-TW"] .lang-en { display: none; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 h-screen flex flex-col overflow-hidden">
+
+    <header class="bg-white px-6 py-3 flex justify-between items-center border-b border-gray-200">
+        <h1 class="font-bold text-xl text-blue-600">KeEp</h1>
+        <button onclick="toggleLanguage()" id="langBtn" class="text-sm font-medium px-3 py-1 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-50 transition">
+            English / 中文
+        </button>
+    </header>
+
+    <nav class="bg-white flex justify-around border-b border-gray-100 shadow-sm">
+        <button onclick="showSection('privacy', this)" class="nav-btn w-full py-4 font-medium text-blue-600 border-b-2 border-blue-600">
+            <span class="lang-zh">隱私政策</span><span class="lang-en">Privacy</span>
+        </button>
+        <button onclick="showSection('terms', this)" class="nav-btn w-full py-4 font-medium text-gray-500">
+            <span class="lang-zh">使用者條款</span><span class="lang-en">Terms</span>
+        </button>
+        <button onclick="showSection('contact', this)" class="nav-btn w-full py-4 font-medium text-gray-500">
+            <span class="lang-zh">聯絡我們</span><span class="lang-en">Contact</span>
+        </button>
+    </nav>
+
+    <main class="flex-grow p-6">
+        
+        <section id="privacy" class="content-section active">
+            <div class="lang-zh">
+                <h2 class="text-2xl font-bold mb-4">隱私權政策</h2>
+                <div class="space-y-4 text-gray-600 leading-relaxed text-sm">
+                    <p>我們重視您的隱私，本應用程式（KeEp）致力於保護您的個人資料。</p>
+                    <p><strong>1. 資料蒐集：</strong>我們僅蒐集提供服務所必需的資訊。部分數據儲存於您的設備本地。</p>
+                    <p><strong>2. 資料用途：</strong>用於提升使用者體驗、記錄習慣進度及寵物互動功能。</p>
+                    <p><strong>3. 第三方共享：</strong>我們不會將您的個人識別資料出售或出租給第三方。</p>
+                </div>
+            </div>
+            <div class="lang-en">
+                <h2 class="text-2xl font-bold mb-4">Privacy Policy</h2>
+                <div class="space-y-4 text-gray-600 leading-relaxed text-sm">
+                    <p>Your privacy is important to us. KeEp is committed to protecting your personal information.</p>
+                    <p><strong>1. Collection:</strong> We only collect data necessary for providing our services. Most data is stored locally on your device.</p>
+                    <p><strong>2. Usage:</strong> Data is used to enhance user experience, track habit progress, and support pet simulation features.</p>
+                    <p><strong>3. Sharing:</strong> We do not sell or rent your personally identifiable information to third parties.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="terms" class="content-section">
+            <div class="lang-zh">
+                <h2 class="text-2xl font-bold mb-4">使用者條款</h2>
+                <div class="space-y-4 text-gray-600 leading-relaxed text-sm">
+                    <p>使用本程式即代表您同意以下條款：</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>軟體授權：</strong>我們授予您個人的、全球性且非獨佔的使用權。</li>
+                        <li><strong>禁止行為：</strong>請勿對本軟體進行反向工程或用於任何非法用途。</li>
+                        <li><strong>免責聲明：</strong>軟體按「原樣」提供，不對特定用途的適用性作任何保證。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lang-en">
+                <h2 class="text-2xl font-bold mb-4">Terms of Service</h2>
+                <div class="space-y-4 text-gray-600 leading-relaxed text-sm">
+                    <p>By using KeEp, you agree to the following terms:</p>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li><strong>License:</strong> We grant you a personal, worldwide, non-exclusive license to use the app.</li>
+                        <li><strong>Restrictions:</strong> You may not reverse engineer or use the app for any illegal activities.</li>
+                        <li><strong>Disclaimer:</strong> The software is provided "as is" without warranty of any kind.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section flex flex-col items-center justify-center">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold mb-4 lang-zh">聯絡我們</h2>
+                <h2 class="text-2xl font-bold mb-4 lang-en">Contact Us</h2>
+                <p class="text-gray-600 mb-8 lang-zh">如有任何疑問，請透過電子郵件與我們聯繫。</p>
+                <p class="text-gray-600 mb-8 lang-en">If you have any questions, please contact us via email.</p>
+                
+                <a href="mailto:kevinjwu.studio@gmail.com" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold shadow-md hover:bg-blue-700 transition block">
+                    kevinjwu.studio@gmail.com
+                </a>
+                
+                <p class="mt-12 text-xs text-gray-400 font-medium tracking-widest">JK STUDIO CO.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="p-3 text-center text-[10px] text-gray-400 bg-white border-t">
+        © 2026 JK Studio Co. All Rights Reserved.
+    </footer>
+
+    <script>
+        // 語系切換
+        function toggleLanguage() {
+            const html = document.documentElement;
+            html.lang = (html.lang === 'zh-TW') ? 'en' : 'zh-TW';
+        }
+
+        // 分頁切換
+        function showSection(sectionId, btn) {
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+
+            document.querySelectorAll('.nav-btn').forEach(b => {
+                b.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+                b.classList.add('text-gray-500');
+            });
+            btn.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+            btn.classList.remove('text-gray-500');
+        }
+    </script>
+</body>
+</html>
