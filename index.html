@@ -3,122 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeEp App - Terms & Privacy</title>
+    <title>KeEp - 看見習慣的生命力</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .content-section { display: none; height: calc(100vh - 130px); overflow-y: auto; }
-        .content-section.active { display: block; }
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --nord-green: #A3B18A;
+            --nord-dark: #3A4434;
+            --nord-soft: #DAD7CD;
+            --nord-bg: #FBFBF9;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--nord-bg);
+            color: var(--nord-dark);
+        }
+
+        /* 語系切換顯示 */
         [lang="en"] .lang-zh, [lang="zh-TW"] .lang-en { display: none; }
+
+        /* 成長階梯視覺效果 */
+        .evolution-step {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .evolution-step:hover {
+            transform: scale(1.05);
+            color: #588157;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 h-screen flex flex-col overflow-hidden">
+<body class="flex flex-col min-h-screen">
 
-    <header class="bg-white px-6 py-3 flex justify-between items-center border-b border-gray-200">
-        <h1 class="font-bold text-xl text-blue-600">KeEp</h1>
-        <button onclick="toggleLanguage()" id="langBtn" class="text-sm font-medium px-3 py-1 border border-blue-600 text-blue-600 rounded-md hover:bg-blue-50 transition">
+    <header class="bg-white/60 backdrop-blur-lg px-6 py-4 flex justify-between items-center sticky top-0 z-50 border-b border-[#E9EDC9]/50">
+        <h1 class="font-bold text-2xl tracking-tight text-[#588157]">KeEp</h1>
+        <button onclick="toggleLanguage()" class="text-xs font-medium px-4 py-1.5 border border-[#A3B18A] text-[#A3B18A] rounded-full hover:bg-[#A3B18A] hover:text-white transition-all">
             English / 中文
         </button>
     </header>
 
-    <nav class="bg-white flex justify-around border-b border-gray-100 shadow-sm">
-        <button onclick="showSection('privacy', this)" class="nav-btn w-full py-4 font-medium text-blue-600 border-b-2 border-blue-600">
-            <span class="lang-zh">隱私政策</span><span class="lang-en">Privacy</span>
-        </button>
-        <button onclick="showSection('terms', this)" class="nav-btn w-full py-4 font-medium text-gray-500">
-            <span class="lang-zh">使用者條款</span><span class="lang-en">Terms</span>
-        </button>
-        <button onclick="showSection('contact', this)" class="nav-btn w-full py-4 font-medium text-gray-500">
-            <span class="lang-zh">聯絡我們</span><span class="lang-en">Contact</span>
-        </button>
-    </nav>
-
-    <main class="flex-grow p-6">
+    <main class="flex-grow">
         
-        <section id="privacy" class="content-section active">
-            <div class="lang-zh">
-                <h2 class="text-2xl font-bold mb-4">隱私權政策</h2>
-                <div class="space-y-4 text-gray-600 leading-relaxed text-sm">
-                    <p>我們重視您的隱私，本應用程式（KeEp）致力於保護您的個人資料。</p>
-                    <p><strong>1. 資料蒐集：</strong>我們僅蒐集提供服務所必需的資訊。部分數據儲存於您的設備本地。</p>
-                    <p><strong>2. 資料用途：</strong>用於提升使用者體驗、記錄習慣進度及寵物互動功能。</p>
-                    <p><strong>3. 第三方共享：</strong>我們不會將您的個人識別資料出售或出租給第三方。</p>
-                </div>
-            </div>
-            <div class="lang-en">
-                <h2 class="text-2xl font-bold mb-4">Privacy Policy</h2>
-                <div class="space-y-4 text-gray-600 leading-relaxed text-sm">
-                    <p>Your privacy is important to us. KeEp is committed to protecting your personal information.</p>
-                    <p><strong>1. Collection:</strong> We only collect data necessary for providing our services. Most data is stored locally on your device.</p>
-                    <p><strong>2. Usage:</strong> Data is used to enhance user experience, track habit progress, and support pet simulation features.</p>
-                    <p><strong>3. Sharing:</strong> We do not sell or rent your personally identifiable information to third parties.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="terms" class="content-section">
-            <div class="lang-zh">
-                <h2 class="text-2xl font-bold mb-4">使用者條款</h2>
-                <div class="space-y-4 text-gray-600 leading-relaxed text-sm">
-                    <p>使用本程式即代表您同意以下條款：</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>軟體授權：</strong>我們授予您個人的、全球性且非獨佔的使用權。</li>
-                        <li><strong>禁止行為：</strong>請勿對本軟體進行反向工程或用於任何非法用途。</li>
-                        <li><strong>免責聲明：</strong>軟體按「原樣」提供，不對特定用途的適用性作任何保證。</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="lang-en">
-                <h2 class="text-2xl font-bold mb-4">Terms of Service</h2>
-                <div class="space-y-4 text-gray-600 leading-relaxed text-sm">
-                    <p>By using KeEp, you agree to the following terms:</p>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li><strong>License:</strong> We grant you a personal, worldwide, non-exclusive license to use the app.</li>
-                        <li><strong>Restrictions:</strong> You may not reverse engineer or use the app for any illegal activities.</li>
-                        <li><strong>Disclaimer:</strong> The software is provided "as is" without warranty of any kind.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="content-section flex flex-col items-center justify-center">
-            <div class="text-center">
-                <h2 class="text-2xl font-bold mb-4 lang-zh">聯絡我們</h2>
-                <h2 class="text-2xl font-bold mb-4 lang-en">Contact Us</h2>
-                <p class="text-gray-600 mb-8 lang-zh">如有任何疑問，請透過電子郵件與我們聯繫。</p>
-                <p class="text-gray-600 mb-8 lang-en">If you have any questions, please contact us via email.</p>
-                
-                <a href="mailto:kevinjwu.studio@gmail.com" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold shadow-md hover:bg-blue-700 transition block">
-                    kevinjwu.studio@gmail.com
+        <section class="relative px-6 py-24 md:py-32 text-center overflow-hidden">
+            <div class="relative z-10 max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-6xl font-bold mb-8 text-[#588157] leading-tight lang-zh">
+                    看見習慣的生命力，<br><span class="text-[#A3B18A]">從種子到花朵。</span>
+                </h2>
+                <h2 class="text-4xl md:text-6xl font-bold mb-8 text-[#588157] leading-tight lang-en">
+                    Experience Habit Vitality,<br><span class="text-[#A3B18A]">From Seed to Bloom.</span>
+                </h2>
+                <p class="text-lg md:text-xl text-[#88927F] mb-12 max-w-2xl mx-auto leading-relaxed lang-zh">
+                    在這裡，你的進步不再只是打勾。我們將每一次的堅持轉化為植物的進化，讓習慣養成變成一場溫暖的成長之旅。
+                </p>
+                <p class="text-lg md:text-xl text-[#88927F] mb-12 max-w-2xl mx-auto leading-relaxed lang-en">
+                    Here, progress is more than a checkmark. We transform consistency into botanical evolution, making habit building a warm journey of growth.
+                </p>
+                <a href="mailto:kevinjwu.studio@gmail.com" class="inline-block bg-[#A3B18A] text-white px-10 py-4 rounded-2xl font-medium shadow-xl shadow-[#A3B18A]/30 hover:bg-[#588157] hover:-translate-y-1 transition-all">
+                    <span class="lang-zh">聯絡我們</span><span class="lang-en">Contact Us</span>
                 </a>
-                
-                <p class="mt-12 text-xs text-gray-400 font-medium tracking-widest">JK STUDIO CO.</p>
+            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#E9EDC9]/20 rounded-full blur-3xl -z-0"></div>
+        </section>
+
+        <section class="px-6 py-16 bg-white/40 border-y border-[#F0F2EB]">
+            <div class="max-w-5xl mx-auto flex justify-around items-center text-center">
+                <div class="evolution-step">
+                    <div class="text-4xl mb-2">🌱</div>
+                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 1</p>
+                    <p class="text-sm lang-zh">發芽</p><p class="text-sm lang-en">Sprout</p>
+                </div>
+                <div class="w-12 h-[1px] bg-[#E9EDC9]"></div>
+                <div class="evolution-step">
+                    <div class="text-4xl mb-2">🌿</div>
+                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 7</p>
+                    <p class="text-sm lang-zh">茁壯</p><p class="text-sm lang-en">Strengthen</p>
+                </div>
+                <div class="w-12 h-[1px] bg-[#E9EDC9]"></div>
+                <div class="evolution-step">
+                    <div class="text-4xl mb-2">🌳</div>
+                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 21</p>
+                    <p class="text-sm lang-zh">內化</p><p class="text-sm lang-en">Internalize</p>
+                </div>
+                <div class="w-12 h-[1px] bg-[#E9EDC9]"></div>
+                <div class="evolution-step">
+                    <div class="text-4xl mb-2">🌸</div>
+                    <p class="text-xs font-bold text-[#A9AF9B]">DAY 30</p>
+                    <p class="text-sm lang-zh">綻放</p><p class="text-sm lang-en">Bloom</p>
+                </div>
             </div>
         </section>
 
+        <section class="px-6 py-24 max-w-6xl mx-auto space-y-24">
+            
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1 order-2 md:order-1">
+                    <div class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-xs font-bold mb-4 uppercase tracking-widest">Core System</div>
+                    <h3 class="text-3xl font-bold mb-6 lang-zh">視覺化成長與寬容連續</h3>
+                    <h3 class="text-3xl font-bold mb-6 lang-en">Visual Growth & Flexible Streaks</h3>
+                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-zh">種子會隨完成次數進化，降低對清單的壓力感。獨創的「任務日計算連續」邏輯，即便生活忙碌，只要在約定的日子完成，你的成長就不會中斷。</p>
+                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-en">Seeds evolve with your actions, reducing list-induced stress. Our "Task-Day" logic ensures your streak stays alive as long as you fulfill your scheduled commitments.</p>
+                </div>
+                <div class="flex-1 order-1 md:order-2 bg-white p-8 rounded-[40px] shadow-sm border border-[#F0F2EB]">
+                    <div class="aspect-square bg-[#F8F9F5] rounded-[32px] flex items-center justify-center text-6xl italic text-[#DAD7CD]">KeEp</div>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                <div class="flex-1 bg-white p-8 rounded-[40px] shadow-sm border border-[#F0F2EB]">
+                    <div class="aspect-video bg-[#F8F9F5] rounded-[32px] flex items-center justify-center text-4xl">📊</div>
+                </div>
+                <div class="flex-1">
+                    <div class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-xs font-bold mb-4 uppercase tracking-widest">AI & Sprint</div>
+                    <h3 class="text-3xl font-bold mb-6 lang-zh">三階梯度與 AI 觀察筆記</h3>
+                    <h3 class="text-3xl font-bold mb-6 lang-en">Sprint Tiers & AI Insights</h3>
+                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-zh">內建 7/21/30 天挑戰模式。里程碑達成時，AI 會彙整數據並撰寫洞察筆記，分析你的成功因子並給予最溫暖的情緒價值。</p>
+                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-en">Built-in 7/21/30 day sprints. Upon reaching milestones, AI generates observation notes to analyze success factors and offer emotional encouragement.</p>
+                </div>
+            </div>
+
+        </section>
     </main>
 
-    <footer class="p-3 text-center text-[10px] text-gray-400 bg-white border-t">
-        © 2026 JK Studio Co. All Rights Reserved.
+    <footer class="bg-white border-t border-[#F0F2EB] py-12 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <h4 class="font-bold text-[#588157] text-xl mb-2">KeEp</h4>
+                <p class="text-xs text-[#A9AF9B]">Designed by JK Studio Co. 2026</p>
+            </div>
+            <div class="flex space-x-12 text-sm font-medium">
+                <a href="privacy.html" class="text-[#A9AF9B] hover:text-[#A3B18A] transition-colors">
+                    <span class="lang-zh">隱私政策</span><span class="lang-en">Privacy</span>
+                </a>
+                <a href="term.html" class="text-[#A9AF9B] hover:text-[#A3B18A] transition-colors">
+                    <span class="lang-zh">使用者條款</span><span class="lang-en">Terms</span>
+                </a>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // 語系切換
         function toggleLanguage() {
             const html = document.documentElement;
             html.lang = (html.lang === 'zh-TW') ? 'en' : 'zh-TW';
-        }
-
-        // 分頁切換
-        function showSection(sectionId, btn) {
-            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
-            document.getElementById(sectionId).classList.add('active');
-
-            document.querySelectorAll('.nav-btn').forEach(b => {
-                b.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
-                b.classList.add('text-gray-500');
-            });
-            btn.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
-            btn.classList.remove('text-gray-500');
         }
     </script>
 </body>
