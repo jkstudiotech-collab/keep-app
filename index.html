@@ -29,18 +29,16 @@
             display: none;
         }
 
-        /* Hero 限制高度並確保不溢出 */
         .hero-section {
             height: calc(100vh - 70px);
             max-height: 900px;
             min-height: 700px;
         }
 
-        /* 手機模擬圖優化 */
         .phone-mockup-white {
             width: 100%;
             max-width: 280px;
-            aspect-ratio: 9 / 19.5;
+            aspect-ratio: 10 / 19.5;
             background-color: #ffffff;
             border-radius: 2.8rem;
             position: relative;
@@ -50,11 +48,7 @@
             transition: transform 0.3s ease;
         }
 
-        .phone-mockup-white:hover {
-            transform: translateY(-5px);
-        }
-
-        .screen-content {
+        .screen-content-inner {
             width: 100%;
             height: 100%;
             background: #F8F9F5;
@@ -62,17 +56,56 @@
             overflow: hidden;
         }
 
-        .phone-notch {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 22px;
-            background: #ffffff;
-            border-bottom-left-radius: 15px;
-            border-bottom-right-radius: 15px;
-            z-index: 20;
+        .carousel-container {
+            display: flex;
+            height: 100%;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 當只有一張圖時禁用滾動 */
+        .no-scroll {
+            overflow-x: hidden !important;
+            scroll-snap-type: none !important;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%;
+            height: 100%;
+            scroll-snap-align: start;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .dot,
+        .dot-stamp,
+        .dot-ai {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #DAD7CD;
+            margin: 0 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dot.active,
+        .dot-stamp.active,
+        .dot-ai.active {
+            background-color: #588157;
+            width: 20px;
+            border-radius: 4px;
         }
 
         /* --- 視覺化成長模型動畫設定 --- */
@@ -161,7 +194,6 @@
     </header>
 
     <main class="flex-grow">
-
         <section
             class="hero-section relative px-6 overflow-hidden bg-gradient-to-br from-[#FBFBF9] to-[#E9EDC9]/30 flex items-center">
             <div
@@ -260,79 +292,181 @@
             </div>
         </section>
 
-        <section class="px-6 py-24 max-w-6xl mx-auto space-y-24">
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="bg-white p-8 rounded-[40px] shadow-sm border border-[#F0F2EB]">
-                    <div class="aspect-video bg-[#F8F9F5] rounded-[32px] flex items-center justify-center">
-                        <img src="task.png" alt="AI Report Feature" class="w-56">
+
+        <section class="px-6 py-8 max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full md:w-[30%] flex flex-col items-center">
+                    <div class="phone-mockup-white !max-w-[260px]">
+                        <div class="screen-content-inner">
+                            <div id="carousel" class="carousel-container">
+                                <div class="carousel-item"><img src="task.png" alt="Task Logic"></div>
+                                <div class="carousel-item"><img src="daily.png" alt="Schedule"></div>
+                                <div class="carousel-item"><img src="goal.png" alt="Challenge"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dot-wrapper flex justify-center mt-6">
+                        <div class="dot active" onclick="scrollToSlide('carousel', 0, 'dot')"></div>
+                        <div class="dot" onclick="scrollToSlide('carousel', 1, 'dot')"></div>
+                        <div class="dot" onclick="scrollToSlide('carousel', 2, 'dot')"></div>
                     </div>
                 </div>
                 <div class="flex-1 text-center md:text-left">
                     <div
                         class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-[10px] font-bold mb-6 uppercase tracking-widest">
                         All-in-One Logic</div>
-                    <h3 class="text-3xl md:text-4xl font-black mb-8 text-[#588157] leading-tight">
-                        從簡單約定，到多維度生活排程
+
+                    <h3 class="text-3xl md:text-4xl font-black mb-6 text-[#588157] leading-tight lang-zh">從簡單約定，到多維度生活排程
                     </h3>
-                    <p class="text-[#6B705C] leading-relaxed mb-8 font-light">
-                        KeEp 結合了極簡的清單管理與強大的自定義系統。我們讓習慣養成變得像灌溉植物一樣直覺，同時提供最靈活的執行節奏，完美契合你的步調。
-                    </p>
+                    <h3 class="text-3xl md:text-4xl font-black mb-6 text-[#588157] leading-tight lang-en">From Simple
+                        Pacts to Multi-Dimensional Flows</h3>
 
-                    <ul class="space-y-4 text-sm text-[#588157] font-medium text-left inline-block">
-                        <li class="flex items-center gap-2">✓ 直覺化每日清單管理</li>
-                        <li class="flex items-center gap-2">✓ 視覺化植物成長回饋</li>
-                        <li class="flex items-center gap-2">✓ 每日/週末/自選多維度設定</li>
-                        <li class="flex items-center gap-2">✓ 自動化任務排程邏輯</li>
-                    </ul>
-                </div>
-            </div>
+                    <p class="text-[#6B705C] text-lg leading-relaxed mb-8 font-light lang-zh">
+                        結合了極簡清單管理與強大自定義系統，提供最靈活的執行節奏。</p>
+                    <p class="text-[#6B705C] text-lg leading-relaxed mb-8 font-light lang-en">Blending minimalist lists
+                        with powerful customization for the ultimate flexible rhythm.</p>
 
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="flex-1 order-2 md:order-1">
-                    <div
-                        class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-xs font-bold mb-4 uppercase tracking-widest">
-                        Growth System</div>
-                    <h3 class="text-3xl font-bold mb-6 lang-zh">數位集章冊</h3>
-                    <h3 class="text-3xl font-bold mb-6 lang-en">Digital Stamp Book</h3>
-                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-zh">
-                        整合月曆視圖，完整保留所有執行的歷史紀錄，收納每一份自律的足跡。</p>
-                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-en">Integrate a calendar view to preserve every
-                        execution record, capturing every footprint of your self-discipline.</p>
-                </div>
-                <div class="order-1 md:order-2 bg-white p-8 rounded-[40px] shadow-sm border border-[#F0F2EB]">
-                    <img src="calendar.png" alt="Calendar Feature" class="w-56">
-                </div>
-            </div>
-
-            <div class="flex flex-col md:flex-row items-center gap-16">
-                <div class="bg-white p-8 rounded-[40px] shadow-sm border border-[#F0F2EB]">
-                    <div class="aspect-video bg-[#F8F9F5] rounded-[32px] flex items-center justify-center">
-                        <img src="report.png" alt="AI Report Feature" class="w-56">
+                    <div class="space-y-6 text-left">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-2 w-2 h-2 bg-[#A3B18A] rounded-full "></div>
+                            <p class="text-[#588157] text-sm font-bold font-medium lang-zh">
+                                直覺化每日清單管理：自動更新每日排程，輕鬆追蹤各項生活目標</p>
+                            <p class="text-[#588157] text-sm font-bold font-medium lang-en">Intuitive Daily Checklist
+                                Management: Auto-Updating Daily Schedules for Effortless Goal Tracking.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-2 w-2 h-2 bg-[#A3B18A] rounded-full"></div>
+                            <p class="text-[#588157] text-sm font-bold font-medium lang-zh">
+                                個人化習慣設定：每日/週末/自選多維度設定 ，契合你的執行節奏</p>
+                            <p class="text-[#588157] text-sm font-bold font-medium lang-en">Personalized Habits:
+                                Flexible Daily, Weekend, and Multi-dimensional Settings Tailored to Your Pace.
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-2 w-2 h-2 bg-[#A3B18A] rounded-full"></div>
+                            <p class="text-[#588157] text-sm font-bold font-medium lang-zh">為生活節奏而生：獨創「任務日連續」邏輯</p>
+                            <p class="text-[#588157] text-sm font-bold font-medium lang-en">Built for Rhythm: Unique
+                                "Task Day Streak" Logic
+                            </p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-2 w-2 h-2 bg-[#A3B18A] rounded-full"></div>
+                            <p class="text-[#588157] text-sm font-bold font-medium lang-zh">目標挑戰模式：7/21/30 天連續目標框架</p>
+                            <p class="text-[#588157] text-sm font-bold font-medium lang-en">Sprint Mode: 7/21/30 Day
+                                Milestone Frameworks
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="flex-1">
-                    <div
-                        class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-xs font-bold mb-4 uppercase tracking-widest">
-                        AI Insight</div>
-                    <h3 class="text-3xl font-bold mb-6 lang-zh">三階挑戰與 AI 週期報告</h3>
-                    <h3 class="text-3xl font-bold mb-6 lang-en">3-Tier Sprints & AI Reports</h3>
-                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-zh">內建 7/21/30 天目標框架，協助你逐步內化習慣。在關鍵時刻，AI
-                        將彙整數據提供量化的溫暖建議。</p>
-                    <p class="text-[#6B705C] leading-relaxed mb-6 lang-en">Built with 7/21/30 day frameworks to help
-                        internalize habits. AI analyzes your data at milestones to offer warm, quantified insights, all
-                        archived in your digital stamp book.</p>
-                </div>
             </div>
-
         </section>
 
+        <section class="px-6 py-8 max-w-6xl mx-auto border-t border-[#F0F2EB]">
+            <div class="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
+                <div class="w-full md:w-[30%] flex flex-col items-center">
+                    <div class="phone-mockup-white !max-w-[260px]">
+                        <div class="screen-content-inner">
+                            <div id="carousel-stamp" class="carousel-container">
+                                <div class="carousel-item"><img src="calendar.png" alt="Calendar View"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dot-wrapper flex justify-center mt-6">
+                        <div class="dot-stamp active" onclick="scrollToSlide('carousel-stamp', 0, 'dot-stamp')"></div>
+                        <div class="dot-stamp" onclick="scrollToSlide('carousel-stamp', 1, 'dot-stamp')"></div>
+                    </div>
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <div
+                        class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-[10px] font-bold mb-6 uppercase tracking-widest">
+                        Growth System</div>
+
+                    <h3 class="text-3xl md:text-4xl font-black mb-6 text-[#588157] leading-tight lang-zh">數位集章冊</h3>
+                    <h3 class="text-3xl md:text-4xl font-black mb-6 text-[#588157] leading-tight lang-en">Digital Stamp
+                        Book</h3>
+
+                    <p class="text-[#6B705C] text-lg leading-relaxed mb-8 font-light lang-zh">
+                        整合月曆視圖，完整保留所有執行的歷史紀錄，收納每一份自律的足跡。</p>
+                    <p class="text-[#6B705C] text-lg leading-relaxed mb-8 font-light lang-en">Integrated calendar views
+                        to preserve history, archiving every footprint of self-discipline.</p>
+
+                    <div class="space-y-6 text-left">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-2 w-2 h-2 bg-[#A3B18A] rounded-full"></div>
+                            <p class="text-[#588157] text-sm font-medium lang-zh">可視化的堅持：透過小樹苗圖示直觀呈現每日達成狀況。</p>
+                            <p class="text-[#588157] text-sm  font-medium  lang-en">Visualized Discipline: Track
+                                progress with
+                                sprouting saplings.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-2 w-2 h-2 bg-[#A3B18A] rounded-full"></div>
+                            <p class="text-[#588157] text-sm font-medium lang-zh">數據回顧報告：詳細記錄達成率、連勝天數與累積光點。</p>
+                            <p class="text-[#588157] text-sm font-medium lang-en">Review Reports: Detailed stats on
+                                completion,
+                                streaks, and points.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-6 py-8 max-w-6xl mx-auto border-t border-[#F0F2EB]">
+            <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+                <div class="w-full md:w-[30%] flex flex-col items-center">
+                    <div class="phone-mockup-white">
+                        <div class="screen-content-inner">
+                            <div id="carousel-ai" class="carousel-container">
+                                <div class="carousel-item"><img src="report.png" alt="AI Report 1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dot-wrapper flex justify-center mt-6">
+                        <div class="dot-ai active" onclick="scrollToSlide('carousel-ai', 0, 'dot-ai')"></div>
+                        <div class="dot-ai" onclick="scrollToSlide('carousel-ai', 1, 'dot-ai')"></div>
+                    </div>
+                </div>
+                <div class="flex-1 text-center md:text-left">
+                    <div
+                        class="inline-block px-4 py-1 rounded-full bg-[#E9EDC9] text-[#588157] text-[10px] font-bold mb-6 uppercase tracking-widest">
+                        AI Insight</div>
+
+                    <h3 class="text-3xl md:text-4xl font-black mb-6 text-[#588157] lang-zh">三階挑戰與 AI 週期報告</h3>
+                    <h3 class="text-3xl md:text-4xl font-black mb-6 text-[#588157] lang-en">3-Tier Sprints & AI Reports
+                    </h3>
+
+                    <p class="text-[#6B705C] text-lg leading-relaxed mb-8 font-light lang-zh">內建 7/21/30 天目標框架。在關鍵時刻，AI
+                        將彙整數據提供量化的溫暖建議。</p>
+                    <p class="text-[#6B705C] text-lg leading-relaxed mb-8 font-light lang-en">Built with 7/21/30 day
+                        frameworks. AI analyzes your data to provide warm, quantified insights at milestones.</p>
+
+                    <div class="space-y-6 text-left">
+                        <div class="flex items-start gap-3">
+                            <div class="mt-2 w-2 h-2 bg-[#A3B18A] rounded-full"></div>
+                            <p class="text-[#588157] text-sm font-medium lang-zh">量化成就感：自動生成完成率與連勝分析。</p>
+                            <p class="text-[#588157] text-sm font-medium lang-en">Quantified Success: Auto-generated
+                                completion
+                                and streak analysis.</p>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="mt-2 w-2 h-2 bg-[#A3B18A] rounded-full"></div>
+                            <p class="text-[#588157] text-sm font-medium lang-zh">溫暖成長建議：根據執行狀況提供個人化方向。</p>
+                            <p class="text-[#588157] text-sm font-medium lang-en">Warm Guidance: Personalized directions
+                                based on
+                                your execution.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-white border-t border-[#F0F2EB] py-12 px-6">
+    <footer class="bg-white border-t border-[#F0F2EB] py-12 px-6 text-center md:text-left">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-center md:text-left">
+            <div>
                 <h4 class="font-bold text-[#588157] text-xl mb-1 italic">KeEp</h4>
-                <p class="text-[10px] text-[#A9AF9B] tracking-[0.3em]">DESIGNED BY JK STUDIO CO. © 2026 JK Studio</p>
+                <p class="text-[10px] text-[#A9AF9B] tracking-[0.3em] uppercase">DESIGNED BY JK STUDIO CO. © 2026 JK
+                    Studio</p>
             </div>
             <div class="flex space-x-12 text-[11px] font-bold text-[#A9AF9B] tracking-widest uppercase">
                 <a href="mailto:kevinjwu.studio@gmail.com" class="hover:text-[#A3B18A] transition-colors">Contact</a>
@@ -343,27 +477,50 @@
     </footer>
 
     <script>
-        // 語言切換
-        function toggleLanguage() {
-            const html = document.documentElement;
-            html.lang = (html.lang === 'zh-TW') ? 'en' : 'zh-TW';
-        }
+        function toggleLanguage() { const h = document.documentElement; h.lang = (h.lang === 'zh-TW') ? 'en' : 'zh-TW'; }
 
-        // 監測滾動觸發動畫
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    // 觸發後即停止監測，避免重複動畫
-                    observer.unobserve(entry.target);
-                }
+        function setupCarousel(carouselId, dotClass) {
+            const container = document.getElementById(carouselId);
+            if (!container) return;
+
+            const items = container.querySelectorAll('.carousel-item');
+
+            // 自動尋找緊鄰的手機容器下方的 dot-wrapper
+            const parentSection = container.closest('section');
+            const dotContainer = parentSection.querySelector('.dot-wrapper');
+
+            if (items.length <= 1) {
+                if (dotContainer) dotContainer.style.display = 'none';
+                container.classList.add('no-scroll');
+                return;
+            }
+
+            const dots = parentSection.querySelectorAll('.' + dotClass);
+            container.addEventListener('scroll', () => {
+                const i = Math.round(container.scrollLeft / container.offsetWidth);
+                dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
             });
-        }, { threshold: 0.3 }); // 當 30% 區塊進入視窗時觸發
 
-        const evolutionSection = document.getElementById('evolution-trigger');
-        if (evolutionSection) {
-            observer.observe(evolutionSection);
+            setInterval(() => {
+                const i = (Math.round(container.scrollLeft / container.offsetWidth) + 1) % items.length;
+                container.scrollTo({ left: i * container.offsetWidth, behavior: 'smooth' });
+            }, 4000);
         }
+
+        function scrollToSlide(id, i) {
+            const c = document.getElementById(id);
+            c.scrollTo({ left: i * c.offsetWidth, behavior: 'smooth' });
+        }
+
+        window.onload = () => {
+            setupCarousel('carousel', 'dot');
+            setupCarousel('carousel-stamp', 'dot-stamp');
+            setupCarousel('carousel-ai', 'dot-ai');
+        };
+
+        const obs = new IntersectionObserver((es) => { es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); } }); }, { threshold: 0.3 });
+        const trigger = document.getElementById('evolution-trigger');
+        if (trigger) obs.observe(trigger);
     </script>
 </body>
 
