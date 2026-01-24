@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+
+:root {
+    --nord-green: #A3B18A;
+    --nord-dark: #3A4434;
+    --nord-soft: #DAD7CD;
+    --nord-bg: #FBFBF9;
+}
+
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: var(--nord-bg);
+    color: var(--nord-dark);
+    scroll-behavior: smooth;
+}
+
+[lang="en"] .lang-zh,
+[lang="zh-TW"] .lang-en {
+    display: none;
+}
+
+/* --- Logo 樣式：模擬 App Store 的正方形圓角 --- */
+.app-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 9px;
+    /* 標準 iOS App Icon 圓角比例 */
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.footer-logo {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+[lang="en"] .lang-zh,
+[lang="zh-TW"] .lang-en {
+    display: none;
+}
+
+.hero-section {
+    height: calc(100vh - 70px);
+    max-height: 900px;
+    min-height: 700px;
+}
+
+.hero-section {
+    height: calc(100vh - 100px);
+    max-height: 800px;
+    min-height: 550px;
+}
+
+/* --- 優化後的 iPhone Mockup CSS --- */
+.phone-mockup-white {
+    width: 100%;
+    max-width: 265px;
+    aspect-ratio: 9 / 18;
+    /* 更接近 iPhone 的 19.5:9 比例 */
+    background-color: #f2f2f2;
+    border-radius: 3.5rem;
+    /* 更有質感的圓角 */
+    position: relative;
+    padding: 12px;
+    /* 螢幕與外殼的間距 (機身厚度感) */
+    box-shadow:
+        0 0 0 2px #f0f0f0,
+        /* 外邊緣線 */
+        0 20px 50px -10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    z-index: 10;
+}
+
+/* iPhone 螢幕黑邊 (Bezel) */
+.screen-bezel {
+    width: 100%;
+    height: 100%;
+    /* 螢幕邊緣黑框 */
+    border-radius: 2.8rem;
+    padding: 3px;
+    /* 黑邊寬度 */
+    overflow: hidden;
+    position: relative;
+}
+
+.screen-content-inner {
+    width: 100%;
+    height: 100%;
+    background: #F8F9F5;
+    border-radius: 2.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+/* 精緻膠囊劉海 (Dynamic Island Style) */
+.phone-notch {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 24px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 30;
+}
+
+/* iPhone 側邊按鍵 (物理細節) */
+.phone-mockup-white::before,
+.phone-mockup-white::after {
+    content: "";
+    position: absolute;
+    background: #bababa;
+    width: 3px;
+    border-radius: 2px;
+}
+
+/* 音量鍵 & 靜音鍵 (左側) */
+.phone-mockup-white::before {
+    height: 100px;
+    left: -3px;
+    top: 120px;
+    box-shadow: 0 40px 0 #e5e5e5, 0 -40px 0 #e5e5e5;
+    /* 模擬多個按鍵 */
+}
+
+/* 電源鍵 (右側) */
+.phone-mockup-white::after {
+    height: 60px;
+    right: -3px;
+    top: 150px;
+}
+
+.screen-content-inner {
+    width: 100%;
+    height: 100%;
+    background: #F8F9F5;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 當只有一張圖時禁用滾動 */
+.no-scroll {
+    overflow-x: hidden !important;
+    scroll-snap-type: none !important;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    height: 100%;
+    scroll-snap-align: start;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.dot,
+.dot-stamp,
+.dot-ai {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #DAD7CD;
+    margin: 0 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.dot.active,
+.dot-stamp.active,
+.dot-ai.active {
+    background-color: #588157;
+    width: 20px;
+    border-radius: 4px;
+}
+
+/* --- 視覺化成長模型動畫設定 --- */
+
+@keyframes slideInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* 初始狀態隱藏，當 active class 加入時才觸發 */
+.evolution-step,
+.evolution-line {
+    opacity: 0;
+}
+
+.evolution-section.active .evolution-step,
+.evolution-section.active .evolution-line {
+    animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 設置 0.5 秒遞增延遲 */
+.evolution-section.active .evolution-step:nth-child(1) {
+    animation-delay: 0s;
+}
+
+/* Seed */
+.evolution-section.active .evolution-line:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+/* Line 1 */
+.evolution-section.active .evolution-step:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+/* Sprout */
+.evolution-section.active .evolution-line:nth-child(4) {
+    animation-delay: 0.75s;
+}
+
+/* Line 2 */
+.evolution-section.active .evolution-step:nth-child(5) {
+    animation-delay: 1.0s;
+}
+
+/* Grow */
+.evolution-section.active .evolution-line:nth-child(6) {
+    animation-delay: 1.25s;
+}
+
+/* Line 3 */
+.evolution-section.active .evolution-step:nth-child(7) {
+    animation-delay: 1.5s;
+}
+
+/* Bud */
+.evolution-section.active .evolution-line:nth-child(8) {
+    animation-delay: 1.75s;
+}
+
+/* Line 4 */
+.evolution-section.active .evolution-step:nth-child(9) {
+    animation-delay: 2.0s;
+}
+
+/* Bloom */
+/* --- 新增：山丘與太陽動畫 --- */
+
+/* 太陽光芒閃爍動畫 */
+@keyframes sunFlare {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+.sun-container {
+    position: absolute;
+    top: 5%;
+    right: 6%;
+    z-index: 1;
+}
+
+.sun-main {
+    fill: #FFD166;
+}
+
+.sun-rays {
+    transform-origin: center;
+    animation: sunFlare 3s ease-in-out infinite;
+    fill: #FFD166;
+}
+
+/* 山丘裝飾 */
+.hills-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hill {
+    position: absolute;
+    bottom: -10px;
+    background: linear-gradient(to top, #E9EDC9 0%, #F4F7E5 100%);
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    opacity: 0.5;
+}
+
+.hill-left {
+    width: 70%;
+    height: 150px;
+    left: -10%;
+}
+
+.hill-right {
+    width: 60%;
+    height: 100px;
+    right: -5%;
+}
