@@ -32,27 +32,94 @@
         .hero-section {
             height: calc(100vh - 100px);
             max-height: 800px;
-            min-height: 600px;
+            min-height: 550px;
         }
 
+        /* --- 優化後的 iPhone Mockup CSS --- */
         .phone-mockup-white {
             width: 100%;
-            max-width: 280px;
-            aspect-ratio: 10 / 19.5;
-            background-color: #ffffff;
-            border-radius: 2.8rem;
+            max-width: 265px;
+            aspect-ratio: 9 / 18;
+            /* 更接近 iPhone 的 19.5:9 比例 */
+            background-color: #f2f2f2;
+            border-radius: 3.5rem;
+            /* 更有質感的圓角 */
             position: relative;
-            border: 10px solid #ffffff;
-            box-shadow: 0 0 0 1px #f0f0f0, 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
+            padding: 12px;
+            /* 螢幕與外殼的間距 (機身厚度感) */
+            box-shadow:
+                0 0 0 2px #f0f0f0,
+                /* 外邊緣線 */
+                0 20px 50px -10px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease;
+            z-index: 10;
+        }
+
+        /* iPhone 螢幕黑邊 (Bezel) */
+        .screen-bezel {
+            width: 100%;
+            height: 100%;
+            /* 螢幕邊緣黑框 */
+            border-radius: 2.8rem;
+            padding: 3px;
+            /* 黑邊寬度 */
+            overflow: hidden;
+            position: relative;
         }
 
         .screen-content-inner {
             width: 100%;
             height: 100%;
             background: #F8F9F5;
-            border-radius: 2rem;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 精緻膠囊劉海 (Dynamic Island Style) */
+        .phone-notch {
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 24px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 30;
+        }
+
+        /* iPhone 側邊按鍵 (物理細節) */
+        .phone-mockup-white::before,
+        .phone-mockup-white::after {
+            content: "";
+            position: absolute;
+            background: #bababa;
+            width: 3px;
+            border-radius: 2px;
+        }
+
+        /* 音量鍵 & 靜音鍵 (左側) */
+        .phone-mockup-white::before {
+            height: 100px;
+            left: -3px;
+            top: 120px;
+            box-shadow: 0 40px 0 #e5e5e5, 0 -40px 0 #e5e5e5;
+            /* 模擬多個按鍵 */
+        }
+
+        /* 電源鍵 (右側) */
+        .phone-mockup-white::after {
+            height: 60px;
+            right: -3px;
+            top: 150px;
+        }
+
+        .screen-content-inner {
+            width: 100%;
+            height: 100%;
+            background: #F8F9F5;
+            border-radius: 40px;
             overflow: hidden;
         }
 
@@ -198,8 +265,8 @@
 
         .sun-container {
             position: absolute;
-            top: 10%;
-            right: 10%;
+            top: 5%;
+            right: 6%;
             z-index: 1;
         }
 
@@ -310,13 +377,12 @@
                 </div>
 
                 <div class="md:w-[40%] h-full flex items-center justify-center py-8 md:py-12">
-                    <!-- <video width="320" height="240" class="w-full h-full object-cover" controls>
-                                <source src="hero.mov" type="video/mp4">
-                            </video> -->
                     <div class="phone-mockup-white">
-                        <div class="phone-notch"></div>
-                        <div class="screen-content">
-                            <img src="cover.jpg" alt="KeEp App Screen" class="w-full h-full object-cover">
+                        <div class="screen-bezel">
+                            <div class="phone-notch"></div>
+                            <div class="screen-content-inner">
+                                <img src="cover.jpg" alt="KeEp App Screen" class="w-full h-full object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
