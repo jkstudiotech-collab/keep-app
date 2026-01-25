@@ -193,6 +193,49 @@ body {
     border-radius: 4px;
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 主標題動畫：持續 0.8 秒 */
+.animate-fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-delay-1 {
+    animation-delay: 0.5s;
+}
+
+@keyframes bounce-gentle {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.animate-bounce-gentle {
+    animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+/* 讓引導圖示在 1.2 秒後才淡入，作為最後的驚喜 */
+.animate-delay-3 {
+    animation-delay: 1.2s;
+}
+
 /* --- 視覺化成長模型動畫設定 --- */
 
 @keyframes slideInRight {
