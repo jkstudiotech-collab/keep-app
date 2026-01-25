@@ -141,6 +141,8 @@ body {
     overflow: hidden;
 }
 
+
+/* carousel */
 .carousel-container {
     display: flex;
     height: 100%;
@@ -155,7 +157,6 @@ body {
     display: none;
 }
 
-/* 當只有一張圖時禁用滾動 */
 .no-scroll {
     overflow-x: hidden !important;
     scroll-snap-type: none !important;
@@ -307,6 +308,35 @@ body {
 }
 
 /* Bloom */
+ @keyframes slow-sprout-evolution {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.6);
+            }
+
+            20%,
+            80% {
+                opacity: 0.6;
+                transform: translateY(0) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.7);
+            }
+        }
+
+        .sprout-svg-bg {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        /* 觸發類別：動畫總長 8 秒，更慢進慢出 */
+        .sprout-active {
+            animation: slow-sprout-evolution 8s ease-in-out forwards;
+        }
 /* --- 新增：山丘與太陽動畫 --- */
 
 /* 太陽光芒閃爍動畫 */
