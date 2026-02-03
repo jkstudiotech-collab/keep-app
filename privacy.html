@@ -1,105 +1,214 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - KeEp</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-            line-height: 1.6;
-            color: #24292e;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background-color: #ffffff;
+        :root {
+            --primary-gradient: #A3B18A;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #FBFBF9;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
-        h1 { border-bottom: 1px solid #eaecef; padding-bottom: .3em; margin-top: 40px; }
-        h2 { border-bottom: 1px solid #eaecef; padding-bottom: .3em; margin-top: 30px; }
-        .date { color: #586069; font-size: 0.9em; margin-bottom: 30px; }
-        .section { margin-bottom: 25px; }
-        .contact { background-color: #f6f8fa; padding: 15px; border-radius: 6px; border: 1px solid #d1d5da; }
-        hr { height: .25em; padding: 0; margin: 48px 0; background-color: #e1e4e8; border: 0; }
-        code { background-color: rgba(27,31,35,.05); border-radius: 3px; padding: .2em .4em; font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 60px;
+            border-radius: 1.5rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: 800;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .effective-date {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 50px;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: #0f172a;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background: var(--primary-gradient);
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+
+        .lang-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+
+        .lang-en {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-right: 1px solid #f1f5f9;
+            padding-right: 20px;
+        }
+
+        .lang-zh {
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--bg-light);
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .contact-info h2::before {
+            display: none;
+        }
+
+        .contact-info h2 {
+            justify-content: center;
+            margin-top: 0;
+            background: #0f172a;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        a {
+            color: #A3B18A;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 850px) {
+            .lang-pair {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .lang-en {
+                border-right: none;
+                border-bottom: 1px solid #f1f5f9;
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+            .container {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="section">
-        <h1>Privacy Policy</h1>
-        <p class="date">Effective Date: January 21, 2026</p>
-        <p>This Privacy Policy explains how I handle your information. By using <strong>KeEp</strong>, you consent to the practices described herein.</p>
+<div class="container">
+    <h1>Privacy Policy</h1>
+    <p class="effective-date">Last Updated / 最後更新日期: February 2, 2026</p>
 
-        <h2>1. Information Collection & Local-First Design</h2>
-        <ul>
-            <li><strong>Localized Storage:</strong> KeEp follows a Local-First architecture. Your habit records, task history, and growth progress are stored only on your mobile device.</li>
-            <li><strong>No Identification:</strong> I do not collect personal identifiers like your name, email, or phone number, as there is no registration required.</li>
-        </ul>
-
-        <h2>2. Third-Party Services & AI Data Transmission</h2>
-        <p>To provide core functionalities, the Application utilizes the following services:</p>
-        <ul>
-            <li><strong>Cloudflare & Gemini API:</strong>
-                <ul>
-                    <li><strong>Scope:</strong> Used for "AI Milestone Insights," "Weekly Reviews," and "Customized Greetings".</li>
-                    <li><strong>Transmission:</strong> Necessary anonymous task data is transmitted via a secure Cloudflare worker to the Gemini API for real-time processing.</li>
-                    <li><strong>No Permanent Storage:</strong> Data is used solely to generate immediate content. Neither the Developer nor third-party providers permanently store your raw logs.</li>
-                </ul>
-            </li>
-            <!-- <li><strong>Google AdMob:</strong> The App displays ads provided by Google AdMob. This service may collect anonymous device identifiers to serve ads, subject to Google’s privacy policy.</li> -->
-        </ul>
-
-        <h2>3. Liability for Data Loss and Software Bugs</h2>
-        <ul>
-            <li><strong>Non-Recoverability:</strong> If your data is lost due to device replacement, uninstallation, or system errors, I have no means to retrieve it for you.</li>
-            <li><strong>Bug Disclaimer:</strong> The Developer is not responsible for any direct or indirect loss caused by software errors or defects.</li>
-        </ul>
-
-        <h2>4. Contact Information</h2>
-        <div class="contact">
-            For any questions regarding this policy, please contact me at:<br>
-            📧 <strong>jkstudiotech@gmail.com</strong>
+    <section>
+        <h2>1. Introduction / 同意條款</h2>
+        <div class="lang-pair">
+            <p class="lang-en">This Privacy Policy governs your use of <strong>KeEp</strong> (the "Application"). By downloading and using the Application, you explicitly consent to the practices described in this Policy. If you do not agree, please do not use the Application.</p>
+            <p class="lang-zh">本隱私權政策適用於您對 <strong>KeEp</strong>（以下簡稱「本應用程式」）的使用。當您下載並使用本程式，即表示您明確同意本政策所述之資訊處理方式。若您不同意，請勿使用本程式。</p>
         </div>
-    </div>
+    </section>
 
-    <hr>
-
-    <div class="section">
-        <h1>KeEp 隱私權政策</h1>
-        <p class="date">最近更新日期：2026年1月21日</p>
-        <p>本政策旨在說明 <strong>KeEp</strong> 如何處理您的資訊。當您開始使用本 App，即代表您同意本隱私權政策。</p>
-
-        <h2>1. 資訊收集與 Local-First 設計</h2>
-        <ul>
-            <li><strong>資料在地化：</strong>本 App 採用本地優先 (Local-first) 架構。您的任務紀錄、種子成長進度等均存於您的設備中。</li>
-            <li><strong>無身分識別：</strong>我不要求註冊登入，因此無法辨識您的身分，亦不會收集您的聯絡資訊。</li>
-        </ul>
-
-        <h2>2. 第三方服務與 AI 資料傳輸</h2>
-        <p>為了提供核心功能，本 App 使用了以下服務：</p>
-        <ul>
-            <li><strong>Cloudflare 與 Gemini API：</strong>
-                <ul>
-                    <li><strong>功能範疇：</strong>「AI 週期洞察報告」、「上週回顧」與「客製化首頁問候語」。</li>
-                    <li><strong>處理方式：</strong>匿名數據透過 Cloudflare 加密中轉至 Gemini API 進行處理。</li>
-                    <li><strong>不留存聲明：</strong>數據僅用於即時生成內容，開發者與第三方服務商均不會永久儲存您的原始紀錄。</li>
-                </ul>
-            </li>
-            <!-- <li><strong>Google AdMob：</strong>本 App 內含 Google AdMob 廣告，該服務可能收集匿名廣告識別碼用以投放廣告。</li> -->
-        </ul>
-
-        <h2>3. 免責聲明 (資料損失與軟體瑕疵)</h2>
-        <ul>
-            <li><strong>不可恢復性：</strong>若因更換裝置、解除安裝或系統錯誤導致資料遺失，我無法協助找回資料。</li>
-            <li><strong>Bug 免責：</strong>對於因程式錯誤 (Bug) 導致的任何損失，開發者不承擔損害賠償責任。</li>
-        </ul>
-
-        <h2>4. 聯絡方式</h2>
-        <div class="contact">
-            如有任何疑問，請透過以下信箱聯繫：<br>
-            📧 <strong>jkstudiotech@gmail.com</strong>
+    <section>
+        <h2>2. Local-First Design / 本地優先設計</h2>
+        <div class="lang-pair">
+            <ul class="lang-en">
+                <li><strong>Local Storage:</strong> Your habit records and progress are stored only on your mobile device.</li>
+                <li><strong>No User Accounts:</strong> We do not collect names, emails, or phone numbers. No registration required.</li>
+                <li><strong>User Responsibility:</strong> The Developer has no means to recover data lost due to device damage or uninstallation.</li>
+            </ul>
+            <ul class="lang-zh">
+                <li><strong>本地儲存：</strong> 您的習慣記錄與進度僅儲存於您的行動裝置中。</li>
+                <li><strong>無個人識別：</strong> 我們不收集姓名、Email 或電話，且無需註冊即可使用。</li>
+                <li><strong>使用者責任：</strong> 開發者無法救回因裝置損壞或刪除 App 而遺失的資料。</li>
+            </ul>
         </div>
+    </section>
+
+    <section>
+        <h2>3. AI Processing / AI 數據處理</h2>
+        <div class="lang-pair">
+            <p class="lang-en">We use Cloudflare Workers and Google Gemini API for AI features. Data is transmitted anonymously for real-time processing. Users must not enter sensitive personal info; Developer is not liable for such exposure.</p>
+            <p class="lang-zh">本程式使用 Cloudflare Workers 與 Google Gemini API 提供 AI 功能。數據以匿名方式進行即時傳輸。嚴禁輸入敏感個資（如密碼、醫療紀錄），開發者不對此類資料的曝露負責。</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>4. Liability Disclaimer / 免責聲明</h2>
+        <div class="lang-pair">
+            <p class="lang-en">The Application is provided "as is". The Developer (jkstudiotech) shall not be liable for any indirect damages or data loss resulting from software bugs or hardware failure.</p>
+            <p class="lang-zh">本應用程式按「現狀」提供。開發者（jkstudiotech）對於因軟體錯誤、系統中斷或硬體損壞導致的任何直接或間接損失（含數據遺失），不負賠償責任。</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>5. Children’s Privacy / 兒童隱私</h2>
+        <div class="lang-pair">
+            <p class="lang-en">The Application is not intended for children under 13 (US) or 14 (Taiwan) without parental consent.</p>
+            <p class="lang-zh">本程式不對 13 歲（美國）或 14 歲（台灣）以下未成年人提供服務，除非已獲得監護人同意。</p>
+        </div>
+    </section>
+
+    <div class="contact-info">
+        <h2>Contact Information / 聯絡方式</h2>
+        <p>Email: <a href="mailto:jkstudiotech@gmail.com">jkstudiotech@gmail.com</a></p>
     </div>
+</div>
 
 </body>
 </html>
