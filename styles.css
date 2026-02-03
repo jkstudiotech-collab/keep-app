@@ -233,6 +233,9 @@ body {
 }
 
 /* 讓引導圖示在 1.2 秒後才淡入，作為最後的驚喜 */
+.animate-delay-2 {
+    animation-delay: 1.1s;
+}
 .animate-delay-3 {
     animation-delay: 1.2s;
 }
