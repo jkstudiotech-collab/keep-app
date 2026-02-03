@@ -1,86 +1,270 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Use - KeEp</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-            line-height: 1.6;
-            color: #24292e;
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            background-color: #ffffff;
+        :root {
+            --primary-color: #A3B18A;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #FBFBF9;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
-        h1 { border-bottom: 1px solid #eaecef; padding-bottom: .3em; margin-top: 40px; }
-        h2 { border-bottom: 1px solid #eaecef; padding-bottom: .3em; margin-top: 30px; }
-        .date { color: #586069; font-size: 0.9em; margin-bottom: 30px; }
-        .section { margin-bottom: 25px; }
-        .alert { background-color: #fcfaea; padding: 15px; border-radius: 6px; border: 1px solid #d1d5da; margin: 20px 0; }
-        hr { height: .25em; padding: 0; margin: 48px 0; background-color: #e1e4e8; border: 0; }
-        strong { color: #b45d67; } /* 強化免責聲明的視覺提醒 */
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 60px;
+            border-radius: 1.5rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .effective-date {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 50px;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            color: #0f172a;
+        }
+
+        h2::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 24px;
+            background: var(--primary-color);
+            margin-right: 15px;
+            border-radius: 10px;
+        }
+
+        .lang-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+
+        .lang-en {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-right: 1px solid #f1f5f9;
+            padding-right: 20px;
+        }
+
+        .lang-zh {
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        .disclaimer-box {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .disclaimer-caps {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            margin-top: 60px;
+            padding: 40px;
+            background: var(--bg-light);
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px dashed #cbd5e1;
+        }
+
+        .contact-info h2::before {
+            display: none;
+        }
+
+        .contact-info h2 {
+            justify-content: center;
+            margin-top: 0;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: opacity 0.2s;
+            font-weight: 500;
+        }
+
+        a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 850px) {
+            .lang-pair {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .lang-en {
+                border-right: none;
+                border-bottom: 1px solid #f1f5f9;
+                padding-right: 0;
+                padding-bottom: 15px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
     </style>
 </head>
+
 <body>
 
-    <div class="section">
+    <div class="container">
         <h1>Terms of Use</h1>
-        <p class="date">Last Updated: January 21, 2026</p>
-        <p>Welcome to <strong>KeEp</strong>. This Application is developed and provided by the Developer as a free service. By using the Application, you agree to be bound by the following terms:</p>
+        <p class="effective-date">Last Updated / 最後更新日期: February 2, 2026</p>
 
-        <h2>1. Nature of Service</h2>
-        <ul>
-            <li><strong>No-Account System:</strong> This App is designed with a "Local-first" philosophy. We do not require or provide a user account or login system. All of your data is stored exclusively on your personal device.</li>
-            <li><strong>AI-Powered Features:</strong> The App integrates AI technology powered by the Gemini API via a secure Cloudflare worker.</li>
-            <li><strong>Advertisements:</strong> This is a free app supported by third-party advertising services (e.g., Google AdMob).</li>
-        </ul>
+        <section>
+            <h2>1. Acceptance of Terms / 接受條款</h2>
+            <div class="lang-pair">
+                <p class="lang-en">By downloading or using <strong>KeEp</strong> (the "Application"), you agree to these
+                    Terms. If you do not agree, you must delete the Application immediately. This is a legally binding
+                    agreement between you and the Developer (**jkstudiotech**).</p>
+                <p class="lang-zh">當您下載或使用
+                    <strong>KeEp</strong>（以下簡稱「本應用程式」），即表示您同意接受本條款之約束。若您不同意，請立即刪除本程式。本條款為您與開發者（jkstudiotech）之間具法律約束力之協議。
+                </p>
+            </div>
+        </section>
 
-        <div class="alert">
-            <h2>2. User Responsibility & Data Retention</h2>
-            <ul>
-                <li><strong>Data Maintenance:</strong> You are solely responsible for your data. Because the App does not provide cloud backup, the Developer <strong>cannot access or restore</strong> your records.</li>
-                <li><strong>Uninstallation:</strong> Uninstalling the Application will result in the <strong>permanent deletion</strong> of all locally stored data. This data cannot be recovered.</li>
-            </ul>
+        <section>
+            <h2>2. Nature of Service / 服務性質</h2>
+            <div class="lang-pair">
+                <ul class="lang-en">
+                    <li><strong>Local-First:</strong> All data is stored exclusively on your device. We do not provide
+                        cloud sync or account systems.</li>
+                    <li><strong>AI Integration:</strong> Uses Gemini API via Cloudflare. Service availability depends on
+                        third-party providers.</li>
+                    <li><strong>Advertisements:</strong> Supported by Google AdMob.</li>
+                </ul>
+                <ul class="lang-zh">
+                    <li><strong>本地優先：</strong> 所有數據僅儲存於您的個人裝置。我們不提供帳號系統或雲端同步。</li>
+                    <li><strong>AI 整合：</strong> 透過 Cloudflare 使用 Gemini API。服務可用性取決於第三方提供商。</li>
+                    <li><strong>廣告服務：</strong> 本程式由 Google AdMob 等第三方廣告支持。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. User Responsibility / 使用者責任</h2>
+            <div class="lang-pair">
+                <p class="lang-en">You are solely responsible for your data maintenance. Uninstalling the App results in
+                    <strong>permanent deletion</strong> of data. The Developer cannot access or restore your records.
+                </p>
+                <p class="lang-zh">您需自行負責數據之維護。解除安裝將導致數據<strong>永久刪除</strong>。開發者在技術上無法存取或協助您還原任何記錄。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>4. Absolute Disclaimer / 絕對免責聲明</h2>
+            <div class="lang-pair">
+                <p class="lang-en disclaimer-caps">THE APPLICATION IS PROVIDED "AS IS". THE DEVELOPER DISCLAIMS ALL
+                    WARRANTIES, INCLUDING MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. WE DO NOT GUARANTEE THE
+                    APP WILL BE ERROR-FREE.</p>
+                <p class="lang-zh">本程式按「現狀」提供。開發者不提供任何形式之保證，包括但不限於對適售性或特定用途適用性之保證。我們不保證程式完全無誤或服務不中斷。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>5. Use of AI Services / AI 服務使用規範</h2>
+            <div class="lang-pair">
+                <div class="lang-en">
+                    <p><strong>For Information Only:</strong> AI-generated insights, weekly reviews, and greetings are
+                        for informational and motivational purposes only. They <strong>DO NOT</strong> constitute
+                        medical, legal, or professional advice.</p>
+                    <p><strong>Assumption of Risk:</strong> Users assume all risks associated with following AI
+                        recommendations. The Developer is not liable for any losses or damages resulting from reliance
+                        on AI content.</p>
+                </div>
+                <div class="lang-zh">
+                    <p><strong>僅供參考：</strong> AI 生成之洞察報告、週報與問候語僅供參考，不構成任何醫療、法律或專業建議。使用者應自行評估資訊準確性。</p>
+                    <p><strong>風險自負：</strong> 開發者不對因信賴 AI 內容所生之損失負責。因參考 AI 內容而產生的任何行為後果，由使用者自行承擔。</p>
+                </div>
+            </div>
+        </section>
+
+
+        <section>
+            <h2>6. Limitation of Liability / 責任限制</h2>
+            <div class="lang-pair">
+                <p class="lang-en">The Developer is not liable for any losses (including psychological stress or data
+                    loss) resulting from bugs or hardware failure. Our total liability shall not exceed $0 or the amount
+                    paid by you (if any).</p>
+                <p class="lang-zh">開發者不對因程式錯誤或硬體故障導致的任何損失（包括心理壓力或數據遺失）負責。我們的總賠償責任不應超過 0 元或您實際支付之費用。</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>7. Jurisdiction / 管轄法院</h2>
+            <div class="lang-pair">
+                <p class="lang-en">These Terms are governed by the laws of <strong>Taiwan (R.O.C.)</strong>. Any
+                    disputes shall be subject to the exclusive jurisdiction of the <strong>Taipei District
+                        Court</strong>.</p>
+                <p class="lang-zh">本條款受<strong>中華民國（台灣）</strong>法律管轄。任何爭議應以<strong>台灣台北地方法院</strong>為唯一管轄法院。</p>
+            </div>
+        </section>
+
+        <div class="contact-info">
+            <h2>Questions? / 聯絡我們</h2>
+            <p>Email: <a href="mailto:jkstudiotech@gmail.com">jkstudiotech@gmail.com</a></p>
         </div>
-
-        <h2>3. Absolute Disclaimer of Liability ("AS IS" Clause)</h2>
-        <ul>
-            <li><strong>Service "AS IS":</strong> The Application is provided on an "AS IS" basis. The Developer does not guarantee that the App will be 100% error-free or uninterrupted.</li>
-            <li><strong>Data Loss:</strong> The Developer shall <strong>not be liable</strong> for any damages or losses (including but not limited to psychological stress or loss of progress) resulting from software bugs, crashes, or hardware failure.</li>
-            <li><strong>AI Content:</strong> AI-generated insights are for informational purposes only. Users assume all risks associated with following AI recommendations.</li>
-        </ul>
-    </div>
-
-    <hr>
-
-    <div class="section">
-        <h1>KeEp 使用條款</h1>
-        <p class="date">最近更新日期：2026年1月21日</p>
-        <p>歡迎使用 <strong>KeEp</strong> 應用程式。本 App 由個人開發者開發並提供。在您開始使用前，請詳閱以下條款：</p>
-
-        <h2>1. 服務性質與責任限制</h2>
-        <ul>
-            <li><strong>現狀提供：</strong>本 App 是由我個人出於興趣開發並免費提供的工具，以「現狀 (AS IS)」提供服務。</li>
-            <li><strong>無擔保聲明：</strong>身為個人開發者，我雖然致力於優化程式，但不保證程式絕對無錯誤 (Bug) 或不會發生中斷。</li>
-            <li><strong>絕對免責：</strong>因軟體瑕疵、資料遺失（包括連續打卡紀錄、種子狀態）、或因更換裝置導致的數據清空，我對此<strong>不承擔任何法律賠償或補償責任</strong>。</li>
-        </ul>
-
-        <div class="alert">
-            <h2>2. 資料保存與使用</h2>
-            <ul>
-                <li><strong>本地儲存：</strong>本 App 無帳號系統，所有數據均儲存於您的個人設備中。</li>
-                <li><strong>自主管理：</strong>您須自行負責資料的保存，<strong>解除安裝本 App 將導致所有本地數據被永久刪除</strong>且無法恢復。</li>
-            </ul>
-        </div>
-
-        <h2>3. AI 服務之使用</h2>
-        <ul>
-            <li><strong>僅供參考：</strong>AI 生成之洞察報告、週報與問候語僅供參考，不構成任何醫療、法律或專業建議。使用者應自行評估資訊準確性，開發者不對因信賴 AI 內容所生之損失負責。</li>
-            <li><strong>風險自負：</strong>因參考 AI 內容而產生的任何行為後果，由使用者自行承擔。</li>
-        </ul>
     </div>
 
 </body>
+
 </html>
