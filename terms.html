@@ -162,11 +162,52 @@
                 font-size: 2rem;
             }
         }
+
+        .breadcrumb {
+            max-width: 960px;
+            ;
+            padding: 0 16px;
+            font-size: 16px;
+            color: #A9AF9B;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .breadcrumb ol {
+            list-style: none;
+            display: flex;
+            gap: 6px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .breadcrumb a {
+            color: #A9AF9B;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #588157;
+        }
+
+        .breadcrumb .current {
+            color: #588157;
+            font-weight: 500;
+        }
+
+        .breadcrumb-separator {
+            color: #C7CBBE;
+        }
     </style>
 </head>
 
 <body>
-
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="breadcrumb-separator">/</li>
+            <li class="current">Terms of Use</li>
+        </ol>
+    </nav>
     <div class="container">
         <h1>Terms of Use</h1>
         <p class="effective-date">Last Updated / 最後更新日期: February 2, 2026</p>
