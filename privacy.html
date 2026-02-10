@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="favicon.ico" sizes="any">
     <title>KeEp - 最療癒的數位養成App</title>
     <style>
         :root {
@@ -153,10 +153,52 @@
                 font-size: 2rem;
             }
         }
+
+        .breadcrumb {
+            max-width: 960px;
+            ;
+            padding: 0 16px;
+            font-size: 16px;
+            color: #A9AF9B;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        .breadcrumb ol {
+            list-style: none;
+            display: flex;
+            gap: 6px;
+            padding: 0;
+            margin: 0;
+        }
+
+        .breadcrumb a {
+            color: #A9AF9B;
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            color: #588157;
+        }
+
+        .breadcrumb .current {
+            color: #588157;
+            font-weight: 500;
+        }
+
+        .breadcrumb-separator {
+            color: #C7CBBE;
+        }
     </style>
 </head>
 
 <body>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="breadcrumb-separator">/</li>
+            <li class="current">Privacy Policy</li>
+        </ol>
+    </nav>
 
     <div class="container">
         <h1>Privacy Policy</h1>
@@ -169,7 +211,8 @@
                     downloading and using the Application, you explicitly consent to the practices described in this
                     Policy. If you do not agree, please do not use the Application.</p>
                 <p class="lang-zh">本隱私權政策適用於您對
-                    <strong>KeEp</strong>（以下簡稱「本應用程式」）的使用。當您下載並使用本程式，即表示您明確同意本政策所述之資訊處理方式。若您不同意，請勿使用本程式。</p>
+                    <strong>KeEp</strong>（以下簡稱「本應用程式」）的使用。當您下載並使用本程式，即表示您明確同意本政策所述之資訊處理方式。若您不同意，請勿使用本程式。
+                </p>
             </div>
         </section>
 
